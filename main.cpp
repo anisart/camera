@@ -1,22 +1,29 @@
 #include <QtGui>
-#include <QCamera>
-#include <QCameraViewfinder>
-#include <QCameraImageCapture>
+#include "camera.h"
 
 int main(int c, char **v)
 {
+    QApplication::setGraphicsSystem("raster");
     QApplication app(c,v);
 
-    QCamera *camera = new QCamera;
-    QCameraViewfinder *viewFinder = new QCameraViewfinder();
-    viewFinder->show();
+    QMainWindow mw;
+    CameraExample *w = new CameraExample;
+    QPushButton *button = new QPushButton("camera");
+    mw.setCentralWidget(button);
+    //QObject::connect(button,SIGNAL(clicked()),w,SLOT(showFullScreen()));
 
-    camera->setViewfinder(viewFinder);
-
-    QCameraImageCapture *imageCapture = new QCameraImageCapture(camera);
-
-    camera->setCaptureMode(QCamera::CaptureStillImage);
-    camera->start();
-
+    mw.showMaximized();
+    w->showFullScreen();
     return app.exec();
 }
+
+//class Window : public QMainWindow
+//{
+//    Q_OBJECT
+//public:
+//    Window()
+//    {
+
+//    }
+//    virtual ~Window() {}
+//};
