@@ -8,7 +8,7 @@ int main(int c, char **v)
 
     QMainWindow mw;
     CameraExample *w = new CameraExample;
-    QPushButton *button = new QPushButton("camera");
+    //QPushButton *button = new QPushButton("camera");
     mw.setCentralWidget(button);
     //QObject::connect(button,SIGNAL(clicked()),w,SLOT(showFullScreen()));
 
